@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="py-5 bg-image-full mx-auto"
+         style="    background-image: url('https://www.telegraph.co.uk/content/dam/Travel/2018/January/white-plane-sky.jpg?imwidth=500');
+        background-repeat: no-repeat;
+">
+    <div style="height: 28vh;"></div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <h1>Flight Manager</h1>
+        <div>
+            <p class="lead" style="font-size: 24px; font-style: italic;">
+                "Book your tickets today..."
+            </p>
+        </div>
+        <div>
+            <a href="/Flight/GetAll?page=1" class="btn btn-primary text-center mb-2">View All Flights</a>
+
+        </div>
+        @if (User.IsInRole("Admin"))
+        {
+            <div>
+                <a href="/User/All?page=1&showBy=10&orderBy=usernameAsc" class="btn btn-primary text-center mb-2">View All Users</a>
+            </div>
+
+        }
+
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+            <div>
+                <a href="/Reservation/All?page=1" class="btn btn-primary text-center mb-2">View All Reservations</a>
+            </div>
+        }
+    </div>
+</section>
